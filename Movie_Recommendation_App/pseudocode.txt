@@ -1,0 +1,51 @@
+
+class Tokenizer:
+    constructors:
+        Tokenizer(delimiter = ',', escape = '"')
+            initialize delimiter to default ',' char
+            initialize escape to default '"' char
+            reserve token list size to 16 elements
+            initialize current token index to 0
+
+        Tokenizer(delimiter, escape)
+            initialize delimiter to specified char
+            initialize escape to specified char
+            reserve token list size to 16 elements
+            initialize current token index to 0
+
+    member functions:
+        tokenize(line):
+            clear most recent token list
+            reset current token index
+            create new empty string -> current token string
+            initialize escape state to not escaping special characters
+            foreach character in line:
+                if character is the delimiter and not escaping special characters:
+                    add the current token to tokens list
+                    clear current token
+                elif character is escape char:
+                    if escape enabled and next character is not a delimiter:
+                        add character to current token string
+                    elif
+                        flip parser escape state
+                elif: // not special character (delimiter or escape chars)
+                    add character to current token string
+            add current token to tokens list // need to add last token since loop
+                                             // doesnt add tokens without a delimiter
+                                             // at the end
+
+        tokenCount():
+            return the size of token list
+
+        hasTokens():
+            return true if current token index is less than token list size
+
+        nextToken():
+            return the token list element at current token index
+            increment current token index
+
+    member data:
+        delimiter char // splits a string using this char
+        escape char // preserves special characters (delimiter & escape chars)
+        list of tokens // cached tokens parsed from a string
+        current token index // keeps track of the current index for iterated tokens from tokens list
